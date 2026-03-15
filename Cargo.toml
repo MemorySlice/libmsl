@@ -1,0 +1,22 @@
+[package]
+name = "libmsl"
+version = "0.1.0"
+edition = "2021"
+description = "MSL (Memory Slice) binary format parsing and writing library"
+license = "MIT"
+
+[features]
+default = ["std"]
+std = []
+compress-zstd = ["dep:zstd"]
+compress-lz4 = ["dep:lz4_flex"]
+compress-all = ["compress-zstd", "compress-lz4"]
+
+[dependencies]
+blake3 = "1"
+uuid = { version = "1", features = ["v4"] }
+thiserror = "2"
+zstd = { version = "0.13", optional = true }
+lz4_flex = { version = "0.11", optional = true }
+
+[dev-dependencies]
